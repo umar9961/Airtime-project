@@ -1,0 +1,6 @@
+<?php
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Airtime API is working'
+    ]);
+});
