@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: airtime-project
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
