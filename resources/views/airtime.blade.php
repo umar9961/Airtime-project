@@ -1,62 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Airtime & Data</title>
+    <title>Buy Airtime</title>
 </head>
 <body>
 
-<h2>Buy Airtime</h2>
-
-<form method="POST" action="/buy-airtime">
-    @csrf
-
-    <label>Network</label><br>
-    <select name="network" required>
-        <option value="">Select Network</option>
-        <option value="MTN">MTN</option>
-        <option value="AIRTEL">Airtel</option>
-        <option value="GLO">Glo</option>
-        <option value="9MOBILE">9mobile</option>
-    </select><br><br>
-
-    <label>Phone Number</label><br>
-    <input type="text" name="phone" required><br><br>
-
-    <label>Amount (₦)</label><br>
-    <input type="number" name="amount" required><br><br>
-
-    <button type="submit">Buy Airtime</button>
-</form>
+<h3>Your Wallet Balance</h3>
+<p>
+₦{{ number_format(\App\Models\Wallet::first()->balance ?? 0, 2) }}
+</p>
 
 <hr>
 
-<h2>Buy Data</h2>
+<h1>Buy Airtime</h1>
 
-<form method="POST" action="/buy-data">
+<form method="POST" action="/pay">
     @csrf
 
     <label>Network</label><br>
     <select name="network" required>
         <option value="">Select Network</option>
         <option value="MTN">MTN</option>
-        <option value="AIRTEL">Airtel</option>
-        <option value="GLO">Glo</option>
-        <option value="9MOBILE">9mobile</option>
-    </select><br><br>
+        <option value="Airtel">Airtel</option>
+        <option value="Glo">Glo</option>
+        <option value="9mobile">9mobile</option>
+    </select>
+    <br><br>
 
     <label>Phone Number</label><br>
-    <input type="text" name="phone" required><br><br>
+    <input type="text" name="phone" placeholder="080xxxxxxxx" required>
+    <br><br>
 
-    <label>Data Plan</label><br>
-    <select name="plan" required>
-        <option value="">Select Plan</option>
-        <option value="500MB">500MB</option>
-        <option value="1GB">1GB</option>
-        <option value="2GB">2GB</option>
-        <option value="5GB">5GB</option>
-    </select><br><br>
+    <label>Amount (₦)</label><br>
+    <input type="number" name="amount" min="100" required>
+    <br><br>
 
-    <button type="submit">Buy Data</button>
+    <button type="submit">Pay & Buy Airtime</button>
 </form>
 
 </body>

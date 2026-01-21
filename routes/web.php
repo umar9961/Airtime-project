@@ -1,7 +1,4 @@
-use App\Http\Controllers\PaymentController;
-
-Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
-Route::get('/payment/success', [PaymentController::class, 'success']);<?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -9,10 +6,15 @@ Route::get('/', function () {
     return view('airtime');
 });
 
-Route::post('/buy-airtime', function () {
-    return "Airtime request received";
-});
+Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'pay']);
+Route::get('/payment/success', [App\Http\Controllers\PaymentController::class, 'success']);
+use App\Models\Wallet;
 
-Route::post('/buy-data', function () {
-    return "Data request received";
+Route::get('/wallet', function () {
+    $wallet = Wallet::firstOrCreate(
+        ['user_id' => 1],
+        ['balance' => 0]
+    );
+
+    return "Wallet Balance: ₦" . number_format($wallet->balance, 2);
 });

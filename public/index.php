@@ -1,4 +1,18 @@
 <?php
-echo "<h1>✅ Airtime Project is LIVE</h1>";
-echo "<p>Your server is working correctly.</p>";
-echo "<p>Next step: Airtime system.</p>";
+
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+require __DIR__.'/../vendor/autoload.php';
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+$kernel = $app->make(Kernel::class);
+
+$response = $kernel->handle(
+    $request = Request::capture()
+)->send();
+
+$kernel->terminate($request, $response);
