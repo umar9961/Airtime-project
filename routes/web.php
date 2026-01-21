@@ -1,4 +1,7 @@
-<?php
+use App\Http\Controllers\PaymentController;
+
+Route::post('/pay', [PaymentController::class, 'pay'])->name('pay');
+Route::get('/payment/success', [PaymentController::class, 'success']);<?php
 
 use Illuminate\Support\Facades\Route;
 
