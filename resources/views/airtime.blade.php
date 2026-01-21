@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Buy Airtime</title>
 </head>
 <body>
 
 <h3>Your Wallet Balance</h3>
 <p>
-    ₦{{ number_format(optional(\App\Models\Wallet::first())->balance ?? 0) }}
+    ₦{{ number_format(optional(\App\Models\Wallet::first())->balance ?? 0, 2) }}
 </p>
 
 <hr>
