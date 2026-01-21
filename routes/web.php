@@ -3,5 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return 'Laravel is working 🎉 Airtime app coming soon';
 });
