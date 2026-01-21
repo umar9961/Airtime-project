@@ -1,56 +1,29 @@
-
 <?php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
+use App\Models\Wallet;
 
 class PaymentController extends Controller
 {
-    // Start payment (Paystack)
     public function pay(Request $request)
     {
         $request->validate([
-            'amount' => 'required|numeric|min:100',
+            'network' => 'required',
+            'phone'   => 'required',
+            'amount'  => 'required|numeric|min:50',
         ]);
 
-        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
-            ->post('https://api.paystack.co/transaction/initialize', [
-                'email' => 'customer@example.com',
-                'amount' => $request->amount * 100,
-                'callback_url' => url('/payment/success'),
-            ]);
+        $wallet = Wallet::first();
 
-        if (!$response->successful()) {
-            return back()->with('error', 'Payment initialization failed');
+        if (!$wallet || $wallet->balance < $request->amount) {
+            return back()->with('error', 'Insufficient wallet balance');
         }
 
-        return redirect($response['data']['authorization_url']);
-    }
+        $wallet->balance -= $request->amount;
+        $wallet->save();
 
-    // Payment success → fund wallet
-    public function success()
-    {
-        $userId = 1; // temporary user (no auth yet)
-        $amount = 1000; // test amount
-
-        $wallet = DB::table('wallets')->where('user_id', $userId)->first();
-
-        if ($wallet) {
-            DB::table('wallets')
-                ->where('user_id', $userId)
-                ->update([
-                    'balance' => $wallet->balance + $amount,
-                ]);
-        } else {
-            DB::table('wallets')->insert([
-                'user_id' => $userId,
-                'balance' => $amount,
-            ]);
-        }
-
-        return redirect('/')->with('success', 'Wallet funded successfully');
+        return back()->with('success', 'Airtime purchase simulated successfully');
     }
 }
