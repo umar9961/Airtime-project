@@ -1,11 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AirtimeController;
 
-Route::get('/', function () {
-    return view('airtime');
-});
-
-Route::post('/pay', function () {
-    return "Airtime request received (payment coming later)";
-});
+Route::get('/', [AirtimeController::class, 'index']);
+Route::post('/buy-airtime', [AirtimeController::class, 'buy']);
