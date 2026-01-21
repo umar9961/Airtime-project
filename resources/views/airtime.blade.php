@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Buy Airtime</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial; background:#f5f5f5; padding:20px; }
-        .box { background:#fff; padding:20px; max-width:400px; margin:auto; border-radius:8px; }
-        input, select, button {
-            width:100%; padding:10px; margin-top:10px;
-        }
-        button {
-            background:#28a745; color:#fff; border:none;
-        }
-    </style>
+    <title>Airtime & Data VTU</title>
 </head>
 <body>
 
-<div class="box">
-    <h2>Buy Airtime</h2>
+<h2>Buy Airtime</h2>
 
-    <form method="POST" action="/buy-airtime">
-        @csrf
+<form method="POST" action="/buy-airtime">
+    @csrf
 
-        <label>Network</label>
-        <select name="network" required>
-            <option value="">Select Network</option>
-            <option value="MTN">MTN</option>
-            <option value="Airtel">Airtel</option>
-            <option value="Glo">Glo</option>
-            <option value="9mobile">9mobile</option>
-        </select>
+    <label>Network</label><br>
+    <select name="network" required>
+        <option value="">Select Network</option>
+        <option value="MTN">MTN</option>
+        <option value="AIRTEL">Airtel</option>
+        <option value="GLO">Glo</option>
+        <option value="9MOBILE">9mobile</option>
+    </select><br><br>
 
-        <label>Phone Number</label>
-        <input type="text" name="phone" placeholder="080xxxxxxxx" required>
+    <label>Phone Number</label><br>
+    <input type="text" name="phone" placeholder="080xxxxxxxx" required><br><br>
 
-        <label>Amount (₦)</label>
-        <input type="number" name="amount" placeholder="100" required>
+    <label>Amount (₦)</label><br>
+    <input type="number" name="amount" required><br><br>
 
-        <button type="submit">Continue</button>
-    </form>
-</div>
+    <button type="submit">Buy Airtime</button>
+</form>
+
+<hr>
+
+<h2>Buy Data</h2>
+
+<form method="POST" action="/buy-data">
+    @csrf
+
+    <label>Network</label><br>
+    <select name="network" required>
+        <option value="">Select Network</option>
+        <option value="MTN">MTN</option>
+        <option value="AIRTEL">Airtel</option>
+        <option value="GLO">Glo</option>
+        <option value="9MOBILE">9mobile</option>
+    </select><br><br>
+
+    <label>Phone Number</label><br>
+    <input type="text" name="phone" placeholder="080xxxxxxxx" required><br><br>
+
+    <label>Data Plan</label><br>
+    <select name="plan" required>
+        <option value="500MB">500MB</option>
+        <option value="1GB">1GB</option>
+        <option value="2GB">2GB</option>
+    </select><br><br>
+
+    <button type="submit">Buy Data</button>
+</form>
 
 </body>
 </html>
