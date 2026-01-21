@@ -5,32 +5,31 @@
 </head>
 <body>
 
-<h3>Your Wallet Balance</h3>
-<p>
-₦{{ number_format(optional(\App\Models\Wallet::first())->balance ?? 0) }}
-</p>
-
-<hr>
-
 <h1>Buy Airtime</h1>
 
 <form method="POST" action="/pay">
-    @csrf
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-    <label>Network</label><br>
-    <select name="network" required>
-        <option value="">Select Network</option>
-        <option value="MTN">MTN</option>
-        <option value="Airtel">Airtel</option>
-        <option value="Glo">Glo</option>
-        <option value="9mobile">9mobile</option>
-    </select><br><br>
+    <p>
+        Network:<br>
+        <select name="network">
+            <option value="">Select Network</option>
+            <option value="MTN">MTN</option>
+            <option value="Airtel">Airtel</option>
+            <option value="Glo">Glo</option>
+            <option value="9mobile">9mobile</option>
+        </select>
+    </p>
 
-    <label>Phone Number</label><br>
-    <input type="text" name="phone" placeholder="080xxxxxxxx" required><br><br>
+    <p>
+        Phone Number:<br>
+        <input type="text" name="phone">
+    </p>
 
-    <label>Amount (₦)</label><br>
-    <input type="number" name="amount" required><br><br>
+    <p>
+        Amount (₦):<br>
+        <input type="number" name="amount">
+    </p>
 
     <button type="submit">Buy Airtime</button>
 </form>
