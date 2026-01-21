@@ -7,48 +7,52 @@
 
 <h2>Buy Airtime</h2>
 
-<form>
+<form method="POST" action="/buy-airtime">
+    @csrf
+
     <label>Network</label><br>
-    <select>
+    <select name="network">
         <option>MTN</option>
-        <option>Airtel</option>
-        <option>Glo</option>
-        <option>9mobile</option>
+        <option>AIRTEL</option>
+        <option>GLO</option>
+        <option>9MOBILE</option>
     </select><br><br>
 
     <label>Phone Number</label><br>
-    <input type="text" placeholder="080xxxxxxxx"><br><br>
+    <input type="text" name="phone"><br><br>
 
-    <label>Amount (₦)</label><br>
-    <input type="number"><br><br>
+    <label>Amount</label><br>
+    <input type="number" name="amount"><br><br>
 
-    <button>Buy Airtime</button>
+    <button type="submit">Buy Airtime</button>
 </form>
 
 <hr>
 
 <h2>Buy Data</h2>
 
-<form>
+<form method="POST" action="/buy-data">
+    @csrf
+
     <label>Network</label><br>
-    <select>
+    <select name="network">
         <option>MTN</option>
-        <option>Airtel</option>
-        <option>Glo</option>
-        <option>9mobile</option>
+        <option>AIRTEL</option>
+        <option>GLO</option>
+        <option>9MOBILE</option>
     </select><br><br>
 
+    <label>Phone Number</label><br>
+    <input type="text" name="phone"><br><br>
+
     <label>Data Plan</label><br>
-    <select>
+    <select name="plan">
         <option>500MB</option>
         <option>1GB</option>
         <option>2GB</option>
     </select><br><br>
 
-    <label>Phone Number</label><br>
-    <input type="text" placeholder="080xxxxxxxx"><br><br>
-
-    <button>Buy Data</button>
+    <button type="submit">Buy Data</button>
 </form>
 
 </body>
