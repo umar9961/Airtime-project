@@ -3,41 +3,80 @@
 <head>
     <title>Buy Data</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        .box {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: blue;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Buy Data</h2>
+<div class="box">
+    <h2>Buy Data</h2>
 
-<a href="/">Go to Buy Airtime</a>
-<br><br>
+    <a href="/">Go to Buy Airtime</a>
 
-<form method="POST" action="/buy-data">
-    @csrf
+    <form method="POST" action="/buy-data">
+        @csrf
 
-    <label>Network</label><br>
-    <select name="network" required>
-        <option value="">Select Network</option>
-        <option value="MTN">MTN</option>
-        <option value="Airtel">Airtel</option>
-        <option value="Glo">Glo</option>
-        <option value="9mobile">9mobile</option>
-    </select>
-    <br><br>
+        <label>Network</label>
+        <select name="network" required>
+            <option value="">Select Network</option>
+            <option>MTN</option>
+            <option>Airtel</option>
+            <option>Glo</option>
+            <option>9mobile</option>
+        </select>
 
-    <label>Phone Number</label><br>
-    <input type="text" name="phone" placeholder="08012345678" required>
-    <br><br>
+        <label>Phone Number</label>
+        <input type="text" name="phone" placeholder="08012345678" required>
 
-    <label>Data Plan</label><br>
-    <select name="plan" required>
-        <option value="500MB">500MB</option>
-        <option value="1GB">1GB</option>
-        <option value="2GB">2GB</option>
-    </select>
-    <br><br>
+        <label>Data Plan</label>
+        <select name="plan">
+            <option>500MB</option>
+            <option>1GB</option>
+            <option>2GB</option>
+        </select>
 
-    <button type="submit">Buy Data</button>
-</form>
+        <button type="submit">Buy Data</button>
+    </form>
+</div>
 
 </body>
 </html>
