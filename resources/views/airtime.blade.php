@@ -14,9 +14,9 @@
     <select name="network" required>
         <option value="">Select Network</option>
         <option value="MTN">MTN</option>
-        <option value="AIRTEL">Airtel</option>
-        <option value="GLO">Glo</option>
-        <option value="9MOBILE">9mobile</option>
+        <option value="Airtel">Airtel</option>
+        <option value="Glo">Glo</option>
+        <option value="9mobile">9mobile</option>
     </select>
     <br><br>
 
