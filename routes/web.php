@@ -1,7 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AirtimeController;
+use Illuminate\Http\Request;
 
-Route::get('/', [AirtimeController::class, 'index']);
-Route::post('/buy-airtime', [AirtimeController::class, 'buy']);
+Route::get('/', function () {
+    return view('airtime');
+});
+
+Route::post('/pay', function (Request $request) {
+    return response()->json([
+        'network' => $request->network,
+        'phone' => $request->phone,
+        'amount' => $request->amount,
+    ]);
+});
