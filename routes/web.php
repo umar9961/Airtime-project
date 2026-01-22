@@ -7,10 +7,14 @@ Route::get('/', function () {
     return view('airtime');
 });
 
+Route::get('/data', function () {
+    return view('data');
+});
+
 Route::post('/pay', function (Request $request) {
-    return response()->json([
-        'network' => $request->network,
-        'phone' => $request->phone,
-        'amount' => $request->amount,
-    ]);
+    return "Airtime Sent Successfully";
+});
+
+Route::post('/buy-data', function (Request $request) {
+    return "Data Sent Successfully";
 });

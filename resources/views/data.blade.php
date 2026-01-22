@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Buy Airtime</title>
+    <title>Buy Data</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
-<h2>Buy Airtime</h2>
+<h2>Buy Data</h2>
 
-<a href="/data">Go to Buy Data</a>
+<a href="/">Go to Buy Airtime</a>
 <br><br>
 
-<form method="POST" action="/pay">
+<form method="POST" action="/buy-data">
     @csrf
 
     <label>Network</label><br>
@@ -28,11 +28,15 @@
     <input type="text" name="phone" placeholder="08012345678" required>
     <br><br>
 
-    <label>Amount (₦)</label><br>
-    <input type="number" name="amount" required>
+    <label>Data Plan</label><br>
+    <select name="plan" required>
+        <option value="500MB">500MB</option>
+        <option value="1GB">1GB</option>
+        <option value="2GB">2GB</option>
+    </select>
     <br><br>
 
-    <button type="submit">Buy Airtime</button>
+    <button type="submit">Buy Data</button>
 </form>
 
 </body>
